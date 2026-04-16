@@ -19,3 +19,8 @@ if escolha == 1:
         while i > 3:
             usuario_digitado = str(input("Digite o seu usuário:"))
             if usuario_digitado == user:
+
+def menuInicial():
+    {
+        
+    }
