@@ -92,6 +92,7 @@ def menuSaque(saldo, limite):
     elif valor <= (saldo + limite):
       saldo -= valor
       print("Saque realizado com sucesso")
+      print(f"Saldo: R$ {saldo:.2f}")
     else:
       print("Saldo insuficiente")
     return saldo
@@ -108,6 +109,7 @@ def menuDeposito(saldo):
     else:
       saldo += valor
       print("Depósito realizado com sucesso")
+      print(f"Saldo: R$ {saldo:.2f}")
     return saldo
 
 def menuLimite(limite):
