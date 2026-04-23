@@ -2,6 +2,7 @@ def main():
     user = input("Cadastre o usuário: ")
     senha = input("Crie uma senha: ")
     saldo = 131
+    limite = 100
 
 
     while True:
@@ -21,7 +22,7 @@ def main():
 
                 if usuario_digitado == user and senha_digitada == senha:
                     print("\nAcesso permitido!")
-                    menuInicial(saldo)
+                    menuInicial(saldo, limite)
                     break
                 else:
                     print("\nUsuário ou senha incorretos!")
@@ -38,7 +39,7 @@ def main():
         else:
             print("Opção inválida!")
 
-def menuInicial(saldo):
+def menuInicial(saldo, limite):
     continuar = True
 
     while continuar:
@@ -57,14 +58,18 @@ def menuInicial(saldo):
         match opcao:
             case 1:
                 menuSaldo(saldo)
+                limparTela()
             case 2:
-                print("Realizar Saque Solicitado")
-            case 3: 
-                print("Realizar Depósito Solicitado")
+                saldo = menuSaque(saldo, limite)
+                limparTela()
+            case 3:
+                saldo = menuDeposito(saldo)
+                limparTela()
             case 4:
-                print("Consultar Limite Solicitado")
+                menuLimite(limite)
+                limparTela()
             case 5:
-                print("Encerrar Sistema Solicitado")
+                menuRetornar()
                 continuar = False
 
 def menuSaldo(saldo):
@@ -75,16 +80,63 @@ def menuSaldo(saldo):
     print("                                   ")
     print(f"Saldo: R$ {saldo:.2f}")
 
-def menuSaque():
-    print("Realizar Saque Solicitado")
+def menuSaque(saldo, limite):
+    print("===================================")
+    print("==             SAQUE             ==")
+    print("===================================")
 
-def menuDeposito():
-    print("Realizar Depósito Solicitado")
+    valor = int(input("Digite o valor do saque: R$"))
 
-def menuLimite():
-    print("Consultar Limite Solicitado")
+    if valor <= 0:
+      print("Valor inválido")
+    elif valor <= (saldo + limite):
+      saldo -= valor
+      print("Saque realizado com sucesso")
+    else:
+      print("Saldo insuficiente")
+    return saldo
+
+def menuDeposito(saldo):
+    print("===================================")
+    print("==            DEPÓSITO           ==")
+    print("===================================")
+
+    valor = int(input("Digite o valor do depósito: R$"))
+
+    if valor <= 0:
+      print("Valor inválido")
+    else:
+      saldo += valor
+      print("Depósito realizado com sucesso")
+    return saldo
+
+def menuLimite(limite):
+    print("===================================")
+    print("==         MOSTRAR LIMITE        ==")
+    print("===================================")
+    print(f"Limite: R$ {limite:.2f}")
 
 def menuRetornar():
+    print("Encerrar Sistema Solicitado")
+def limparTela():
+    print("                                        ")
+    print("                                        ")
+    print("                                        ")
+    print("                                        ")
+    print("                                        ")
+    print("                                        ")
+    print("                                        ")
+    print("                                        ")
+    print("                                        ")
+    print("                                        ")
+    print("                                        ")
+    print("                                        ")
+    print("                                        ")
+    print("                                        ")
+    print("                                        ")
+
+
+main()
     print("Encerrar Sistema Solicitado")
 
 
