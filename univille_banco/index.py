@@ -137,9 +137,4 @@ def limparTela():
     print("                                        ")
     print("                                        ")
 
-
-main()
-    print("Encerrar Sistema Solicitado")
-
-
 main()
